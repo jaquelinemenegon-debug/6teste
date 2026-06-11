@@ -1,28 +1,54 @@
-// Sistema de Respostas Inteligentes da AgroIA
+// Capturando Elementos da Página
+const btnIncrease = document.getElementById('btn-increase');
+const btnDecrease = document.getElementById('btn-decrease');
+const btnContrast = document.getElementById('btn-contrast');
+
 const btnIaPerguntar = document.getElementById('btn-ia-perguntar');
 const iaQuestionSelect = document.getElementById('ia-question');
 const iaResponseBox = document.getElementById('ia-response');
 const iaText = document.getElementById('ia-text');
 
-// Banco de dados de respostas da IA baseada na seleção
-const respostasIA = {
-    erosao: "🤖 AgroIA Diagnóstico: Identifiquei fragilidade estrutural no terreno. Recomendo a imediata adoção do Sistema de Plantio Direto. Manter a palhada da colheita anterior protege a camada superficial contra o impacto das gotas de chuva, reduzindo o escoamento da água em até 60% e mantendo os nutrientes no lugar.",
-    pragas: "🤖 AgroIA Diagnóstico: Alerta de desequilíbrio biológico. Em vez de aumentar os agrotóxicos pesados, utilize o Manejo Integrado de Pragas (MIP) associado a Bioinsumos (como o Bacillus thuringiensis). Isso elimina as lagartas específicas sem matar os polinizadores, gerando uma lavoura mais forte e econômica.",
-    seca: "🤖 AgroIA Diagnóstico: Estresse hídrico detectado. A solução de longo prazo é aumentar a matéria orgânica no solo usando rotação de culturas (como a braquiária ou milheto). Solos ricos em palha retêm até 35% mais água. Para curto prazo, avalie sistemas de irrigação gota a gota automatizados por sensores de umidade.",
-    pasto: "🤖 AgroIA Diagnóstico: Solo compactado e pobre em nitrogênio. Recomendo a transição para o sistema ILPF (Integração Lavoura-Pecuária-Floresta). Plantar leguminosas junto com o capim vai fixar nitrogênio no solo naturalmente. As árvores plantadas trarão sombra para o gado, acelerando a engorda e recuperando a terra.",
-    adubo: "🤖 AgroIA Diagnóstico: Oportunidade de otimização de custos. Utilize bactérias fixadoras de nitrogênio (como o Bradyrhizobium) ou solubilizadores de fósforo. Elas desbloqueiam os minerais que já estão presos na terra, permitindo reduzir em até 30% a compra de fertilizantes químicos sintéticos mantendo o mesmo rendimento."
+// 1. Controle de Tamanho da Letra (Acessibilidade)
+let currentFontSizePercent = 100;
+
+btnIncrease.addEventListener('click', () => {
+    if (currentFontSizePercent < 135) {
+        currentFontSizePercent += 10;
+        document.documentElement.style.setProperty('--base-font-size', currentFontSizePercent + '%');
+    }
+});
+
+btnDecrease.addEventListener('click', () => {
+    if (currentFontSizePercent > 85) {
+        currentFontSizePercent -= 10;
+        document.documentElement.style.setProperty('--base-font-size', currentFontSizePercent + '%');
+    }
+});
+
+// 2. Alternar Modo Contraste / Escuro
+btnContrast.addEventListener('click', () => {
+    document.body.classList.toggle('contrast-mode');
+});
+
+// 3. Mecanismo de Respostas do Assistente AgroIA
+const baseRespostasIA = {
+    erosao: "🤖 AgroIA Diagnóstico: Seu solo está perdendo fixação estrutural. Recomendação: Implante imediatamente o Sistema de Plantio Direto e faça curvas de nível no terreno. Manter os restos vegetais da última colheita blinda o chão contra o impacto das chuvas pesadas e retém os adubos.",
+    pragas: "🤖 AgroIA Diagnóstico: Alerta de desequilíbrio na fauna local. Recomendação: Utilize o Manejo Integrado de Pragas (MIP). Insira defensores biológicos (Bioinsumos como fungos específicos ou pequenas vespas biológicas) em vez de defensivos químicos puros. Isso limpa a praga sem afastar as abelhas polinizadoras.",
+    seca: "🤖 AgroIA Diagnóstico: Estresse hídrico vegetal detectado. Recomendação: Melhore a matéria orgânica do solo por meio de plantas de cobertura profunda (como a braquiária). Solos bem cobertos de palha agem como esponjas e conservam até 35% mais água nos períodos sem chuvas.",
+    pasto: "🤖 AgroIA Diagnóstico: Compactação severa e esgotamento do solo. Recomendação: Transicione para o sistema ILPF (Integração Lavoura-Pecuária-Floresta). A alternância periódica com lavouras de grãos quebra as pragas e recupera os nutrientes da grama de forma natural.",
+    adubo: "🤖 AgroIA Diagnóstico: Dependência excessiva de insumos externos minerais. Recomendação: Adote bactérias fixadoras de nitrogênio (como o Bradyrhizobium) diretamente na semente da soja ou feijão. Elas puxam o nitrogênio do ar diretamente para a raiz da planta, poupando milhares de reais em adubo químico."
 };
 
 btnIaPerguntar.addEventListener('click', () => {
-    const valorSelecionado = iaQuestionSelect.value;
-    
-    if (valorSelecionado === "") {
-        iaText.innerText = "Por favor, selecione uma das opções de desafios na lavoura para receber a resposta.";
+    const selecao = iaQuestionSelect.value;
+
+    if (selecao === "") {
+        iaText.innerText = "Por favor, selecione um problema na lista para receber as orientações ecológicas da AgroIA.";
         iaResponseBox.classList.remove('hidden');
         return;
     }
 
-    // Exibe a resposta correspondente
-    iaText.innerText = respostasIA[valorSelecionado];
+    // Aplica a resposta programada e remove a classe oculta (.hidden)
+    iaText.innerText = baseRespostasIA[selecao];
     iaResponseBox.classList.remove('hidden');
 });
