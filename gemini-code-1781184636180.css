@@ -1,0 +1,117 @@
+/* Estilos da AgroIA */
+.ia-box {
+    background-color: var(--white);
+    border: 2px solid var(--green-light);
+    border-radius: 12px;
+    max-width: 700px;
+    margin: 0 auto;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+}
+
+.ia-header {
+    background-color: var(--green-deep);
+    color: white;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.ia-header h3 {
+    color: white;
+    margin: 0;
+    font-size: 1.3rem;
+}
+
+.ia-avatar {
+    font-size: 2rem;
+    background: rgba(255, 255, 255, 0.2);
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.ia-status {
+    font-size: 0.8rem;
+    color: var(--green-light);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.ia-status::before {
+    content: "";
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background-color: #4caf50;
+    border-radius: 50%;
+}
+
+.ia-body {
+    padding: 30px;
+}
+
+.ia-body label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--green-black);
+}
+
+.ia-body select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    margin-bottom: 20px;
+    background-color: var(--white);
+    color: var(--text-dark);
+}
+
+#btn-ia-perguntar {
+    background-color: var(--green-main);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-family: var(--font-heading);
+    font-weight: bold;
+    font-size: 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 100%;
+    transition: background 0.2s;
+}
+
+#btn-ia-perguntar:hover {
+    background-color: var(--green-deep);
+}
+
+.ia-response-box {
+    margin-top: 25px;
+    background-color: var(--green-soft-bg);
+    border-left: 4px solid var(--green-medium);
+    padding: 20px;
+    border-radius: 4px;
+    animation: fadeIn 0.4s ease;
+}
+
+.ia-response-box h4 {
+    color: var(--green-deep);
+    margin-bottom: 8px;
+}
+
+.hidden {
+    display: none;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
