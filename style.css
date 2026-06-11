@@ -6,6 +6,7 @@
     --green-medium: #4caf50;
     --green-light: #a5d6a7;
     --green-soft-bg: #e8f5e9;
+    --header-bg: #c8e6c9; /* Cor de fundo suave para o título principal no modo claro */
     --text-dark: #222c24;
     --text-light: #f5f5f5;
     --white: #ffffff;
@@ -14,17 +15,18 @@
     --base-font-size: 100%;
 }
 
-/* Modo Alto Contraste */
+/* Modo Alto Contraste (Modo Escuro Otimizado) */
 body.contrast-mode {
-    --green-black: #000000;
-    --green-deep: #050505;
-    --green-main: #a5d6a7;
-    --green-medium: #81c784;
-    --green-light: #c8e6c9;
-    --green-soft-bg: #121212;
-    --text-dark: #f0f5f1;
+    --green-black: #ffffff; /* Títulos em branco puro */
+    --green-deep: #0e1a10;
+    --green-main: #b9f6ca; /* Verde limão brilhante para links e botões */
+    --green-medium: #69f0ae;
+    --green-light: #00e676;
+    --green-soft-bg: #111111; /* Fundos secundários escuros */
+    --header-bg: #051c08; /* Mudança do fundo do título no modo escuro */
+    --text-dark: #ffffff; /* Fontes de texto em branco puro para leitura perfeita */
     --text-light: #ffffff;
-    --white: #1e1e1e;
+    --white: #000000; /* Fundo principal preto absoluto */
 }
 
 * {
@@ -39,7 +41,7 @@ body {
     color: var(--text-dark);
     background-color: var(--white);
     line-height: 1.7;
-    transition: background-color 0.3s, color 0.3s;
+    transition: background-color 0.2s, color 0.2s;
 }
 
 h1, h2, h3, h4 {
@@ -76,19 +78,20 @@ h1, h2, h3, h4 {
 
 /* Painel de Acessibilidade */
 .accessibility-panel {
-    background-color: var(--green-black);
-    color: var(--text-light);
+    background-color: #000000;
+    color: #ffffff;
     padding: 10px;
     display: flex;
     justify-content: flex-end;
     align-items: center;
     gap: 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
 .accessibility-panel button {
-    background-color: var(--green-main);
+    background-color: #2e7d32;
     color: white;
-    border: none;
+    border: 1px solid white;
     padding: 5px 12px;
     cursor: pointer;
     font-weight: bold;
@@ -96,17 +99,18 @@ h1, h2, h3, h4 {
 }
 
 .accessibility-panel button:hover {
-    background-color: var(--green-medium);
+    background-color: #4caf50;
 }
 
-/* Cabeçalho */
+/* Cabeçalho com Ajuste de Fundo Dinâmico */
 header {
-    background-color: var(--white);
-    padding: 20px 0;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    background-color: var(--header-bg);
+    padding: 25px 0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     position: sticky;
     top: 0;
     z-index: 100;
+    transition: background-color 0.2s;
 }
 
 .header-flex {
@@ -133,23 +137,24 @@ nav a {
 
 nav a:hover {
     color: var(--green-main);
+    text-decoration: underline;
 }
 
 /* Hero */
 .hero {
-    background: linear-gradient(rgba(5, 28, 8, 0.7), rgba(17, 63, 25, 0.8)), 
+    background: linear-gradient(rgba(5, 28, 8, 0.75), rgba(17, 63, 25, 0.85)), 
                 url('https://images.unsplash.com/photo-1592982537447-6f2ecddb5760?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
-    height: 60vh;
+    height: 55vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    color: var(--text-light);
+    color: #ffffff;
     padding: 0 20px;
 }
 
 .hero-content h2 {
-    color: var(--text-light);
+    color: #ffffff;
     font-size: 3rem;
     margin-bottom: 15px;
 }
@@ -158,9 +163,10 @@ nav a:hover {
     font-size: 1.2rem;
     max-width: 700px;
     margin: 0 auto;
+    color: #e8f5e9;
 }
 
-/* Seções e Divisões estruturais */
+/* Seções estruturais */
 .section-header {
     text-align: center;
     margin-bottom: 40px;
@@ -190,12 +196,14 @@ nav a:hover {
 }
 
 .tag {
-    background-color: var(--green-soft-bg);
-    color: var(--green-main);
-    padding: 4px 10px;
+    background-color: var(--green-main);
+    color: #ffffff;
+    padding: 4px 12px;
     border-radius: 20px;
     font-size: 0.8rem;
     font-weight: bold;
+    display: inline-block;
+    margin-bottom: 10px;
 }
 
 .img-wrapper {
@@ -205,10 +213,10 @@ nav a:hover {
 .img-wrapper img {
     width: 100%;
     border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
 }
 
-/* Custom Lists */
+/* Listas */
 .custom-list {
     list-style: none;
     margin-top: 15px;
@@ -216,7 +224,7 @@ nav a:hover {
 
 .custom-list li {
     margin-bottom: 10px;
-    padding-left: 20px;
+    padding-left: 25px;
     position: relative;
 }
 
@@ -237,6 +245,7 @@ nav a:hover {
 
 .card {
     background-color: var(--white);
+    border: 1px solid var(--green-light);
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 12px rgba(0,0,0,0.05);
@@ -265,15 +274,19 @@ nav a:hover {
 }
 
 .dica-item {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.08);
     padding: 20px;
     border-radius: 6px;
     border-top: 4px solid var(--green-light);
 }
 
 .dica-item h4 {
-    color: var(--text-light);
+    color: #ffffff;
     margin-bottom: 10px;
+}
+
+.dica-item p {
+    color: #f5f5f5;
 }
 
 /* Relatórios */
@@ -287,6 +300,7 @@ nav a:hover {
 
 .report-card {
     background-color: var(--green-soft-bg);
+    border: 1px solid var(--green-light);
     padding: 20px;
     border-radius: 8px;
     display: flex;
@@ -296,17 +310,22 @@ nav a:hover {
 }
 
 .btn-download {
-    background-color: var(--green-main);
+    background-color: #2e7d32;
     color: white;
     text-decoration: none;
-    padding: 10px 20px;
+    padding: 12px 20px;
     border-radius: 4px;
     font-weight: bold;
     white-space: nowrap;
 }
 
 .btn-download:hover {
-    background-color: var(--green-black);
+    background-color: #113f19;
+}
+
+body.contrast-mode .btn-download {
+    background-color: var(--green-main);
+    color: #000000;
 }
 
 /* Caixa AgroIA */
@@ -359,11 +378,13 @@ nav a:hover {
     padding: 10px;
     margin-bottom: 15px;
     border-radius: 4px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--green-light);
+    background-color: var(--white);
+    color: var(--text-dark);
 }
 
 #btn-ia-perguntar {
-    background-color: var(--green-main);
+    background-color: #2e7d32;
     color: white;
     border: none;
     padding: 12px;
@@ -373,12 +394,15 @@ nav a:hover {
     border-radius: 4px;
 }
 
-#btn-ia-perguntar:hover { background-color: var(--green-deep); }
+body.contrast-mode #btn-ia-perguntar {
+    background-color: var(--green-main);
+    color: #000000;
+}
 
 .ia-response-box {
     margin-top: 20px;
     background-color: var(--green-soft-bg);
-    border-left: 4px solid var(--green-medium);
+    border-left: 4px solid var(--green-light);
     padding: 15px;
     border-radius: 4px;
 }
@@ -387,14 +411,15 @@ nav a:hover {
 
 /* Rodapé */
 footer {
-    background-color: var(--green-black);
-    color: rgba(255,255,255,0.6);
+    background-color: #000000;
+    color: #ffffff;
     text-align: center;
     padding: 25px 0;
     margin-top: 40px;
+    border-top: 1px solid rgba(255,255,255,0.1);
 }
 
-/* Responsividade Avançada (Celulares, Notebooks e Monitores) */
+/* Responsividade */
 @media (max-width: 992px) {
     .content-split, .content-split.reverse {
         flex-direction: column;
