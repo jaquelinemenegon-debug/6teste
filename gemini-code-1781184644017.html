@@ -1,0 +1,38 @@
+<section id="agro-ia" class="bg-light section">
+        <div class="container">
+            <div class="section-header">
+                <span class="tag">Interatividade</span>
+                <h2>Converse com a AgroIA</h2>
+                <p>Selecione a prática ou o desafio atual da sua lavoura para receber um diagnóstico sustentável instantâneo da nossa inteligência assistente.</p>
+            </div>
+
+            <div class="ia-box">
+                <div class="ia-header">
+                    <div class="ia-avatar">🌱</div>
+                    <div>
+                        <h3>AgroIA</h3>
+                        <span class="ia-status">Assistente Virtual Ativo</span>
+                    </div>
+                </div>
+                
+                <div class="ia-body">
+                    <label for="ia-question">O que está acontecendo na sua lavoura hoje?</label>
+                    <select id="ia-question">
+                        <option value="">-- Selecione uma situação --</option>
+                        <option value="erosao">Estou enfrentando problemas com erosão e perda de solo após as chuvas.</option>
+                        <option value="pragas">Minha plantação está sofrendo com ataque de lagartas e pragas.</option>
+                        <option value="seca">A região está passando por um período de estiagem/seca prolongada.</option>
+                        <option value="pasto">Tenho uma área de pastagem antiga que ficou degradada e improdutiva.</option>
+                        <option value="adubo">Quero reduzir os custos com adubos químicos sem perder rendimento.</option>
+                    </select>
+
+                    <button id="btn-ia-perguntar">Analisar com AgroIA</button>
+
+                    <div id="ia-response" class="ia-response-box hidden">
+                        <h4>Diagnóstico da AgroIA:</h4>
+                        <p id="ia-text">Selecione uma opção acima para iniciar o mapeamento biológico...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
